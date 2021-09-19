@@ -1,4 +1,4 @@
-import getJson from './jsonLoader';
+import getJson from './jsonLoader.js';
 
 const state = {
    manifest: {},
@@ -9,5 +9,5 @@ const app = async () => {
 
     state.manifest = await getJson("assets/slides/manifest.json");
 
-    
+
 }
