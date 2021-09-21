@@ -1,3 +1,5 @@
+import loadSlides from "./slideLoader.js";
+
 export default class Navigator {
    constructor(slides, deck) {
       this.deck = deck;
@@ -10,11 +12,11 @@ export default class Navigator {
    }
 
    get currentSlide() {
-      return this.slides[this.currentIndex];
+      return this.slides[this.currentIndex] || null;
    }
 
    get totalSlides() {
-      return this.slides.length;
+      return this.slides.length || 0;
    }
 
    get hasPrevious() {
