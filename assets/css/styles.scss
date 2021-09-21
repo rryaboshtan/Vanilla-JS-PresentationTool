@@ -30,19 +30,20 @@ main {
 footer {
     display: flex;
     justify-content: space-between;
+    height: 15vh;
+    font-size: 1.2em;
+    vertical-align: middle;
+
     .left {
-        vertical-align: middle;
-        height: 15vh;
-        // float: left;
         img {
             display: inline-block;
         }
     }
-    .right {
-        font-style: 2em;
-        height: 15vh;
-        float: right;
-    }
+}
+
+.slide-controls {
+    text-align: center;
+    width: 33vh;
 }
 
 .next-slide {

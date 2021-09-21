@@ -35,21 +35,18 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-footer .left {
-  vertical-align: middle;
   height: 15vh;
+  font-size: 1.2em;
+  vertical-align: middle;
 }
 
 footer .left img {
   display: inline-block;
 }
 
-footer .right {
-  font-style: 2em;
-  height: 15vh;
-  float: right;
+.slide-controls {
+  text-align: center;
+  width: 33vh;
 }
 
 .next-slide {
