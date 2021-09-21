@@ -1,7 +1,7 @@
 import loadSlides from './slideLoader.js';
 import Router from './router.js';
 
-export default class Navigator extends HTMLElement {
+class Navigator extends HTMLElement {
    constructor(slides, deck) {
       super();
       this.router = new Router();
