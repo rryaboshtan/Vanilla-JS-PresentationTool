@@ -1,7 +1,7 @@
 import Slide from './slide.js';
 
 async function loadSlide(slideName) {
-   const response = await fetch(`./slides/${slideName}.html`);
+   const response = await fetch(`./assets/slides/${slideName}.html`);
    const slide = await response.text();
    return new Slide(slide);
 }

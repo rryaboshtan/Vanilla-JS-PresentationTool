@@ -7,7 +7,7 @@ const state = {
 const app = async () => {
     state.deck = document.querySelector(main);
 
-    state.manifest = await getJson("assets/slides/manifest.json");
+    state.manifest = await getJson("/assets/slides/manifest.json");
 
 
 }
