@@ -1,9 +1,11 @@
 import loadSlides from './slideLoader.js';
 import Router from './router.js';
 
+// constructor(slides, deck) {
 class Navigator extends HTMLElement {
-   constructor(slides, deck) {
+   constructor() {
       super();
+      this._currentIndex = 0;
       this.router = new Router();
       this.route = this.router.getRoute();
       this.slidesChangedEvent = new CustomEvent('slideschanged', {
@@ -20,8 +22,8 @@ class Navigator extends HTMLElement {
          }
       });
 
-      this.deck = deck;
-      this.slides = slides;
+      // this.deck = deck;
+      // this.slides = slides;
       this.jumpTo(0);
    }
 
@@ -49,28 +51,28 @@ class Navigator extends HTMLElement {
    }
 
    get currentIndex() {
-      return this.currentIndex;
+      return this._currentIndex;
    }
 
    get currentSlide() {
-      return this.slides[this.currentIndex] || null;
+      return this.slides ? this.slides[this._currentIndex] : null;
    }
 
    get totalSlides() {
-      return this.slides.length || 0;
+      return this.slides ? this.slides.length : 0;
    }
 
    get hasPrevious() {
-      return this.currentIndex > 0;
+      return this._currentIndex > 0;
    }
 
    get hasNext() {
-      return this.currentIndex < this.totalSlides - 1;
+      return this._currentIndex < this.totalSlides - 1;
    }
 
    jumpTo(slideIdx) {
       if (slideIdx >= 0 && slideIdx < this.totalSlides) {
-         this.currentIndex = slideIdx;
+         this._currentIndex = slideIdx;
          // this.deck.innerHTML = this.currentSlide.html;
          this.innerHTML = this.currentSlide.html;
          this.router.setRoute(slideIdx + 1);
@@ -81,16 +83,16 @@ class Navigator extends HTMLElement {
 
    next() {
       if (this.hasNext) {
-         this.jumpTo(this.currentIndex + 1);
+         this.jumpTo(this._currentIndex + 1);
       }
    }
 
    previous() {
       if (this.hasPrevious) {
-         this.jumpTo(this.currentIndex - 1);
+         this.jumpTo(this._currentIndex - 1);
       }
    }
 }
 
-export const registerDeck = () => customElements.define('slide-deck', Navigator, {extends: 'div'});
+export const registerDeck = () => customElements.define('slide-deck', Navigator);
 // export const registerDeck = () => customElements.define('slide-deck', Navigator);

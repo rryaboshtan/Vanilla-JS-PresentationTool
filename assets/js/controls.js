@@ -6,17 +6,21 @@ class Controls extends HTMLElement {
    }
 
    async connectedCallback() {
+      let template = null;
       try {
          const response = await fetch('/assets/templates/controls.html');
-         const template = await response.text();
-      } catch {
+         template = await response.text();
+      } catch (e) {
          throw new Error('Controls: fetching /assets/templates/controls.html are impossible');
       }
 
+      console.log('Template = ', template);
       this.innerHTML = '';
       const host = document.createElement('div');
       host.innerHTML = template;
+      console.log('host.innerHTML = ', host.innerHTML);
       this.appendChild(host);
+      console.log('this = ', this);
       this.controlRef = {
          first: document.getElementById('ctrlFirst'),
          prev: document.getElementById('ctrlPrevious'),
@@ -24,6 +28,8 @@ class Controls extends HTMLElement {
          last: document.getElementById('ctrlLast'),
          pos: document.getElementById('position'),
       };
+      console.log("document.getElementById('ctrlFirst') = ", document.getElementById('ctrlFirst'));
+      console.log('this.controlRef.first = ', this.controlRef.first);
       this.controlRef.first.addEventListener('click', () => this.deck.jumpTo(0));
       this.controlRef.prev.addEventListener('click', () => this.deck.previous());
       this.controlRef.next.addEventListener('click', () => this.deck.next());
@@ -44,7 +50,7 @@ class Controls extends HTMLElement {
    }
 
    refreshState() {
-      if (!deck) {
+      if (!this.deck) {
          throw new Error('Controls: deck variable is not exist or equal to null');
       }
       const next = this.deck.hasNext;
