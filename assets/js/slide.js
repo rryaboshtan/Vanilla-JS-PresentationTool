@@ -14,6 +14,7 @@ export default class Slide {
       console.log('this._html = ', this._html);
 
       if (nextSlides.length) {
+         nextSlides[0].style.visibility = 'hidden';
          this._nextSlideName = nextSlides[0].innerText;
       } else {
          this._nextSlideName = null;
