@@ -26,6 +26,6 @@ export default class Router {
     }
     
     getRoute() {
-        return window.location.hash;
+        return window.location.hash.substr(1);
     }
 }
