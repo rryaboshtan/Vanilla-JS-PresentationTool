@@ -9,12 +9,12 @@ export default class Slide {
       }
 
       console.log('this.title = ', this._title);
-      const nextSlides = this._html.querySelectorAll('nextslide');
+      const nextSlides = this._html.querySelectorAll('.nextslide');
       console.log('nextSlides.length = ', nextSlides.length);
       console.log('this._html = ', this._html);
 
       if (nextSlides.length) {
-         nextSlides[0].style.visibility = 'hidden';
+         // nextSlides[0].style.visibility = 'hidden';
          this._nextSlideName = nextSlides[0].innerText;
       } else {
          this._nextSlideName = null;

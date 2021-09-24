@@ -29,6 +29,7 @@ main {
 }
 
 footer {
+  margin-top: 2px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -49,6 +50,15 @@ footer .left img {
   width: 33vh;
 }
 
-.next-slide {
+.nextslide, .transition {
   display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  body {
+    font-size: 2vh;
+  }
+  button {
+    font-size: 15px;
+  }
 }

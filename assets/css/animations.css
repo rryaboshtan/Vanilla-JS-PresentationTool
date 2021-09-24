@@ -1,0 +1,44 @@
+@-webkit-keyframes slide-left {
+  from {
+    margin-left: 0vw;
+  }
+  to {
+    margin-left: -100vw;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    margin-left: 0vw;
+  }
+  to {
+    margin-left: -100vw;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    margin-left: 100vw;
+  }
+  to {
+    margin-left: 0vw;
+  }
+}
+
+.anim-slide-left-begin {
+  -webkit-animation-name: slide-left;
+          animation-name: slide-left;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+}
+
+.anim-slide-left-end {
+  -webkit-animation-name: enter-right;
+          animation-name: enter-right;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: .3s;
+          animation-duration: .3s;
+}

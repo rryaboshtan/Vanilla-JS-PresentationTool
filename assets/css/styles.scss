@@ -1,7 +1,12 @@
 body {
     padding: 5px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    // font-size: 5vh;
 }
+
+// button {
+//     font-size: 5vh;
+// }
 
 h1,
 h2,
@@ -33,6 +38,10 @@ main {
 
 footer {
     // visibility: hidden;
+    // height: auto;
+    // width: 100%;
+    margin-top: 2px;
+    // text-align: center;
     display: flex;
     justify-content: space-between;
     height: 15vh;
@@ -51,6 +60,24 @@ footer {
     width: 33vh;
 }
 
-.next-slide {
+.nextslide, .transition {
     display: none;
+}
+
+// @media only screen and (max-width: 800px){
+//     body {
+//         font-size: 14px;
+//     }
+//     button {
+//         font-size: 14px;
+//     }
+// }
+
+@media only screen and (max-width: 1200px){
+    body {
+        font-size: 2vh;
+    }
+    button {
+        font-size: 15px;
+    }
 }

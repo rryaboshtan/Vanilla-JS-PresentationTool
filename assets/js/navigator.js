@@ -49,9 +49,11 @@ class Navigator extends HTMLElement {
          }
       }
    }
-   // connectedCallback() {
-   //       this.style.backgroundColor = 'red';
-   // }
+   connectedCallback() {
+      // this.style.color = 'red';
+         // this.style.border = '1px solid red';
+      // this.style.display = 'none';
+   }
 
    get currentIndex() {
       return this._currentIndex;
