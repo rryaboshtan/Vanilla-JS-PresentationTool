@@ -2,7 +2,7 @@ import loadSlides from './slideLoader.js';
 import Router from './router.js';
 
 // constructor(slides, deck) {
-class Navigator extends HTMLElement {
+class SlideContainer extends HTMLElement {
    constructor() {
       super();
       this._currentIndex = 0;
@@ -51,7 +51,7 @@ class Navigator extends HTMLElement {
    }
    connectedCallback() {
       // this.style.color = 'red';
-         // this.style.border = '1px solid red';
+      // this.style.border = '1px solid red';
       // this.style.display = 'none';
    }
 
@@ -102,5 +102,5 @@ class Navigator extends HTMLElement {
    }
 }
 
-export const registerDeck = () => customElements.define('slide-deck', Navigator);
-// export const registerDeck = () => customElements.define('slide-deck', Navigator);
+export const registerDeck = () => customElements.define('slide-container', SlideContainer);
+// export const registerDeck = () => customElements.define('slide-container', slideContainer);

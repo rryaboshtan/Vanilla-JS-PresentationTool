@@ -1,6 +1,6 @@
 // import getJson from './jsonLoader.js';
-import {registerDeck} from './navigator.js';
-import { registerControls} from './controls.js';
+import { registerDeck } from './slideContainer.js';
+import { registerControls } from './controls.js';
 
 const state = {
    manifest: {},

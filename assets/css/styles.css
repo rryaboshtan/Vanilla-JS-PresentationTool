@@ -50,7 +50,8 @@ footer .left img {
   width: 33vh;
 }
 
-.nextslide, .transition {
+.nextslide,
+.transition {
   display: none;
 }
 
