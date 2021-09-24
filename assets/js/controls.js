@@ -38,11 +38,11 @@ class Controls extends HTMLElement {
    }
 
    static get observedAttributes() {
-      return ['slideContainer'];
+      return ['deck'];
    }
 
    async attributeChangedCallback(attrName, oldVal, newVal) {
-      if (attrName === 'slideContainer')
+      if (attrName === 'deck')
          if (oldVal !== newVal) {
             this.slideContainer = document.getElementById(newVal);
             this.slideContainer.addEventListener('slideschanged', () => this.refreshState());
