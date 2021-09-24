@@ -1,4 +1,4 @@
-@-webkit-keyframes slide-left {
+@-webkit-keyframes first-step {
   from {
     margin-left: 0vw;
   }
@@ -7,7 +7,7 @@
   }
 }
 
-@keyframes slide-left {
+@keyframes first-step {
   from {
     margin-left: 0vw;
   }
@@ -16,7 +16,7 @@
   }
 }
 
-@keyframes slide-left {
+@-webkit-keyframes second-step {
   from {
     margin-left: 100vw;
   }
@@ -25,7 +25,16 @@
   }
 }
 
-.anim-slide-left-begin {
+@keyframes second-step {
+  from {
+    margin-left: 100vw;
+  }
+  to {
+    margin-left: 0vw;
+  }
+}
+
+.first-step-anim {
   -webkit-animation-name: slide-left;
           animation-name: slide-left;
   -webkit-animation-timing-function: ease-in;
@@ -34,7 +43,7 @@
           animation-duration: .5s;
 }
 
-.anim-slide-left-end {
+.second-step-anim {
   -webkit-animation-name: enter-right;
           animation-name: enter-right;
   -webkit-animation-timing-function: ease-out;
