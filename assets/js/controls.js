@@ -2,7 +2,7 @@ class Controls extends HTMLElement {
    constructor() {
       super();
       this.controlRef = null;
-      this.deck = null;
+      this.slideContainer = null;
    }
 
    async connectedCallback() {
@@ -30,36 +30,36 @@ class Controls extends HTMLElement {
       };
       console.log("document.getElementById('ctrlFirst') = ", document.getElementById('ctrlFirst'));
       console.log('this.controlRef.first = ', this.controlRef.first);
-      this.controlRef.first.addEventListener('click', () => this.deck.jumpTo(0));
-      this.controlRef.prev.addEventListener('click', () => this.deck.previous());
-      this.controlRef.next.addEventListener('click', () => this.deck.next());
-      this.controlRef.last.addEventListener('click', () => this.deck.jumpTo(this.deck.totalSlides - 1));
+      this.controlRef.first.addEventListener('click', () => this.slideContainer.jumpTo(0));
+      this.controlRef.prev.addEventListener('click', () => this.slideContainer.previous());
+      this.controlRef.next.addEventListener('click', () => this.slideContainer.next());
+      this.controlRef.last.addEventListener('click', () => this.slideContainer.jumpTo(this.slideContainer.totalSlides - 1));
       this.refreshState();
    }
 
    static get observedAttributes() {
-      return ['deck'];
+      return ['slideContainer'];
    }
 
    async attributeChangedCallback(attrName, oldVal, newVal) {
-      if (attrName === 'deck')
+      if (attrName === 'slideContainer')
          if (oldVal !== newVal) {
-            this.deck = document.getElementById(newVal);
-            this.deck.addEventListener('slideschanged', () => this.refreshState());
+            this.slideContainer = document.getElementById(newVal);
+            this.slideContainer.addEventListener('slideschanged', () => this.refreshState());
          }
    }
 
    refreshState() {
-      if (!this.deck) {
-         throw new Error('Controls: deck variable is not exist or equal to null');
+      if (!this.slideContainer) {
+         throw new Error('Controls: slideContainer variable is not exist or equal to null');
       }
-      const next = this.deck.hasNext;
-      const prev = this.deck.hasPrevious;
+      const next = this.slideContainer.hasNext;
+      const prev = this.slideContainer.hasPrevious;
       this.controlRef.first.disabled = !prev;
       this.controlRef.prev.disabled = !prev;
       this.controlRef.next.disabled = !next;
       this.controlRef.last.disabled = !next;
-      this.controlRef.pos.innerText = `${this.deck.currentIndex + 1} / ${this.deck.totalSlides}`;
+      this.controlRef.pos.innerText = `${this.slideContainer.currentIndex + 1} / ${this.slideContainer.totalSlides}`;
    }
 }
 
