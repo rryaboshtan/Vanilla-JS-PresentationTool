@@ -55,6 +55,7 @@ class SlideContainer extends HTMLElement {
       // this.style.display = 'none';
    }
 
+  
    get currentIndex() {
       return this._currentIndex;
    }
@@ -99,7 +100,8 @@ class SlideContainer extends HTMLElement {
       if (this.hasNext) {
          // this.jumpTo(this._currentIndex + 1);
          this._animator.stepByStepAnimation(this.querySelector('div'), this._animator.firstStepAnim, () =>
-            this.jumpTo(this._currentIndex + 1));
+            this.jumpTo(this._currentIndex + 1)
+         );
       }
    }
 
