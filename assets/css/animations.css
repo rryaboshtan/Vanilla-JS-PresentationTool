@@ -34,6 +34,28 @@
   }
 }
 
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 .first-step-anim {
   -webkit-animation-name: first-step;
           animation-name: first-step;
@@ -50,4 +72,15 @@
           animation-timing-function: ease-out;
   -webkit-animation-duration: .3s;
           animation-duration: .3s;
+}
+
+.anim-spin {
+  -webkit-animation-name: spin;
+          animation-name: spin;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
