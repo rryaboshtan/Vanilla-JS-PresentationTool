@@ -35,7 +35,7 @@ class SlideContainer extends HTMLElement {
    }
 
    async attributeChangedCallback(attrName, oldVal, newVal) {
-      if (attrName === 'start' && oldVal !== newVal) {
+      if (attrName === 'startSlide' && oldVal !== newVal) {
          {
             console.log('newVal = ', newVal);
             this.slides = await loadSlides(newVal);
