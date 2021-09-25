@@ -97,8 +97,9 @@ class SlideContainer extends HTMLElement {
 
    next() {
       if (this.hasNext) {
-         this.jumpTo(this._currentIndex + 1);
-         
+         // this.jumpTo(this._currentIndex + 1);
+         this._animator.stepByStepAnimation(this.querySelector('div'), this._animator.firstStepAnim, () =>
+            this.jumpTo(this._currentIndex + 1));
       }
    }
 
