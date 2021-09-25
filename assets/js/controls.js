@@ -38,17 +38,17 @@ class Controls extends HTMLElement {
    }
 
    static get observedAttributes() {
-      return ['deck'];
+      return ['slide-container'];
    }
 
    async attributeChangedCallback(attrName, oldVal, newVal) {
-      if (attrName === 'deck' && oldVal !== newVal) {
+      if (attrName === 'slide-container' && oldVal !== newVal) {
          this.slideContainer = document.getElementById(newVal);
          this.slideContainer.addEventListener('slideschanged', () => this.refreshState());
          window.addEventListener('keydown', (e) => {
-            if (e.code === "ArrowRight" || e.code === "Space") {
+            if (e.code === 'ArrowRight' || e.code === 'Space') {
                this.slideContainer.next();
-            } else if (e.code === "ArrowLeft") {
+            } else if (e.code === 'ArrowLeft') {
                this.slideContainer.previous();
             }
          });

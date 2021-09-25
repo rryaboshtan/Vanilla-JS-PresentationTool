@@ -31,11 +31,11 @@ class SlideContainer extends HTMLElement {
    }
 
    static get observedAttributes() {
-      return ['start'];
+      return ['start-slide'];
    }
 
    async attributeChangedCallback(attrName, oldVal, newVal) {
-      if (attrName === 'startSlide' && oldVal !== newVal) {
+      if (attrName === 'start-slide' && oldVal !== newVal) {
          {
             console.log('newVal = ', newVal);
             this.slides = await loadSlides(newVal);
