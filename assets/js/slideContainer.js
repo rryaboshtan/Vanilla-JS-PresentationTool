@@ -23,6 +23,9 @@ class SlideContainer extends HTMLElement {
             }
          }
       });
+      // this.router.eventSource.addEventListener('click', () => console.log('OnClick'));
+
+      // console.error('OnRouteChanged =', this.router.eventSource);
 
       this.jumpTo(0);
    }
@@ -32,8 +35,8 @@ class SlideContainer extends HTMLElement {
    }
 
    async attributeChangedCallback(attrName, oldVal, newVal) {
-      if (attrName === 'start') {
-         if (oldVal !== newVal) {
+      if (attrName === 'start' && oldVal !== newVal) {
+         {
             console.log('newVal = ', newVal);
             this.slides = await loadSlides(newVal);
             console.log('this.slides = ', this.slides);
@@ -55,7 +58,6 @@ class SlideContainer extends HTMLElement {
       // this.style.display = 'none';
    }
 
-  
    get currentIndex() {
       return this._currentIndex;
    }
