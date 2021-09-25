@@ -42,11 +42,17 @@ class Controls extends HTMLElement {
    }
 
    async attributeChangedCallback(attrName, oldVal, newVal) {
-      if (attrName === 'deck')
-         if (oldVal !== newVal) {
-            this.slideContainer = document.getElementById(newVal);
-            this.slideContainer.addEventListener('slideschanged', () => this.refreshState());
-         }
+      if (attrName === 'deck' && oldVal !== newVal) {
+         this.slideContainer = document.getElementById(newVal);
+         this.slideContainer.addEventListener('slideschanged', () => this.refreshState());
+         window.addEventListener('keydown', (e) => {
+            if (e.keyCode == 39 || e.keyCode == 32) {
+               this.slideContainer.next();
+            } else if (e.keyCode == 37) {
+               this.slideContainer.previous();
+            }
+         });
+      }
    }
 
    refreshState() {
