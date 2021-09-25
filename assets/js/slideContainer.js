@@ -1,11 +1,13 @@
 import loadSlides from './slideLoader.js';
 import Router from './router.js';
+import Animator from './animator.js';
 
 // constructor(slides, deck) {
 class SlideContainer extends HTMLElement {
    constructor() {
       super();
       this._currentIndex = 0;
+      this._animator = new Animator();
       this.router = new Router();
       this.route = this.router.getRoute();
       this.slidesChangedEvent = new CustomEvent('slideschanged', {
@@ -22,8 +24,6 @@ class SlideContainer extends HTMLElement {
          }
       });
 
-      // this.deck = deck;
-      // this.slides = slides;
       this.jumpTo(0);
    }
 
@@ -76,22 +76,29 @@ class SlideContainer extends HTMLElement {
    }
 
    jumpTo(slideIdx) {
+      if (this._animator.transitioning) {
+         return;
+      }
       if (slideIdx >= 0 && slideIdx < this.totalSlides) {
-         console.log('|||||||||||||||||||||');
+         // console.log('|||||||||||||||||||||');
          this._currentIndex = slideIdx;
-         console.log('slideIdx = ', slideIdx);
+         // console.log('slideIdx = ', slideIdx);
          // this.deck.innerHTML = this.currentSlide.html;
          this.innerHTML = this.currentSlide.html;
          console.log('this.innerHtml = ', this.innerHTML);
          this.router.setRoute(slideIdx + 1);
          this.route = this.router.getRoute();
          this.dispatchEvent(this.slidesChangedEvent);
+
+         console.log('this = ', this);
+         this._animator.stepByStepAnimation(this.querySelector('div'), this._animator.secondStepAnim);
       }
    }
 
    next() {
       if (this.hasNext) {
          this.jumpTo(this._currentIndex + 1);
+         
       }
    }
 

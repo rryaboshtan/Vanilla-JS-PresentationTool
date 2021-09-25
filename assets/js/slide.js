@@ -3,6 +3,9 @@ export default class Slide {
       this.text = text;
       this._html = document.createElement('div');
       this._html.innerHTML = text;
+      this._html2 = document.createElement('div');
+      this._html2.appendChild(this._html);
+      this._html = this._html2;
       this._title = this._html.querySelectorAll('title');
       if (this._title && this._title.length) {
          this._title = this._title[0].innerText;
@@ -28,6 +31,9 @@ export default class Slide {
    get html() {
       return this._html.innerHTML;
    }
+   // get html() {
+   //    return '<div>' + this._html.innerHTML + '</div>';
+   // }
 
    get nextSlideName() {
       return this._nextSlideName;

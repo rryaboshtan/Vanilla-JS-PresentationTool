@@ -35,8 +35,8 @@
 }
 
 .first-step-anim {
-  -webkit-animation-name: slide-left;
-          animation-name: slide-left;
+  -webkit-animation-name: first-step;
+          animation-name: first-step;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   -webkit-animation-duration: .5s;
@@ -44,8 +44,8 @@
 }
 
 .second-step-anim {
-  -webkit-animation-name: enter-right;
-          animation-name: enter-right;
+  -webkit-animation-name: second-step;
+          animation-name: second-step;
   -webkit-animation-timing-function: ease-out;
           animation-timing-function: ease-out;
   -webkit-animation-duration: .3s;

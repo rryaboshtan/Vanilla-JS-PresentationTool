@@ -2,25 +2,35 @@ export default class Animator {
    constructor() {
       this._transitioning = false;
       this._firstStepAnim = 'first-step-anim';
-      this.secondStepAnim = 'second-step-anim';
+      this._secondStepAnim = 'second-step-anim';
    }
 
    get transitioning() {
       return this._transitioning;
    }
 
-   // get animationDone() {
-   //     return !!
-   // }
+   get firstStepAnim() {
+      return this._firstStepAnim;
+   }
 
-   stepByStepAnimation(htmlElemName, callback, stepAnimClass) {
+   get secondStepAnim() {
+      return this._secondStepAnim;
+   }
+
+   stepByStepAnimation(htmlElemName, stepAnimClass, callback = null) {
+      if (!htmlElemName) {
+         throw new Error('Animator: you must provide a main div element in every slide html file for correct work');
+         //  return;
+      }
       this._transitioning = true;
 
       const animationEnd = () => {
          htmlElemName.removeEventListener('animationend', animationEnd);
          htmlElemName.classList.remove(stepAnimClass);
          this._transitioning = false;
-         callback();
+         if (callback) {
+            callback();
+         }
       };
 
       htmlElemName.addEventListener('animationend', animationEnd, false);
