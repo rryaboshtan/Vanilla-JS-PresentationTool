@@ -1,6 +1,6 @@
 /**
  * @class Animator handles animations and transitions
- * @property {boolean} _transitioning True when animation in effect
+ * @property {boolean} _transitioning True when animation is in effect
  * @property {string} _firstStepAnim animation class name in the css file
  * @property {string} secondStepAnim the class name in the css file
  */
@@ -12,7 +12,7 @@ class Animator {
    }
 
    /**
-    * True when animation in effect
+    * True when animation is in effect
     * @returns {boolean}
     */
    get transitioning() {

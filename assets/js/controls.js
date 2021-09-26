@@ -10,6 +10,7 @@
 
 /**
  * Custom element that renders controls to navigate the slideContainer
+ * @extends {HTMLElement}
  */
 class Controls extends HTMLElement {
    /**
@@ -63,7 +64,7 @@ class Controls extends HTMLElement {
    }
 
    /**
-    * Get the list of attributes to watch
+    * Get the list of observable attributes
     * @returns {string[]}
     */
    static get observedAttributes() {

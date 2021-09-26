@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: slideLoader.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,60 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: slideLoader.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Slide from './slide.js';
 
+/**
+ * Load a single slide
+ * @param {string} slideName 
+ * @returns {Promise&lt;Slide>} The slide
+ */
+async function loadSlide(slideName) {
+   const response = await fetch(`./assets/slides/${slideName}.html`);
+   const slide = await response.text();
+   console.log('slide = ', slide);
+ 
+   return new Slide(slide);
+}
 
-    <h3> </h3>
+/**
+ * 
+ * @param {string} start The name of the first viewed slide
+ * @returns {Promise&lt;Slide[]>} The array of loaded slides
+ */
+export default async function loadSlides(start) {
+   let next = start;
+   const slides = [];
+   const cycle = {};
+   while (next) {
 
+      const nextSlide = await loadSlide(next);
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+      console.log('nextSlide =', nextSlide);
+      console.log('next =', next);
+      if (!cycle[next]) {
+         const nextSlide = await loadSlide(next);
+         slides.push(nextSlide);
+         // cycle[nextSlide.title] = nextSlide;
+         next = nextSlide.nextSlideName;
+         console.log('nextSlideName = ', next);
+      } else {
+         break;
+      }
+   }
+   console.log('slides = ', slides);
+   return slides;
+}</code></pre>
+        </article>
+    </section>
 
 
 

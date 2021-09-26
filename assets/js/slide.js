@@ -12,6 +12,11 @@ export default class Slide {
       this._html2.appendChild(this._html);
       this._html = this._html2;
 
+      /**
+       * @property {string}
+       */
+      this._nextSlideName = null;
+
       /** @property {string} _title title of the slide  */
       this._title = this._html.querySelectorAll('title');
 
