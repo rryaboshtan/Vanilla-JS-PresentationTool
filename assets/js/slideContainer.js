@@ -2,7 +2,13 @@ import loadSlides from './slideLoader.js';
 import Router from './router.js';
 import Animator from './animator.js';
 
-// constructor(slides, deck) {
+/**
+ * The main class that handles rendering the slide container
+ * @property {Animator} _animator Animation helper
+ * @property {Router} _router Routing helper
+ * @property {string} _route The url hash (see window.location.hash)
+ * @property {CustomEvent} slidesChangedEvent 
+ */
 class SlideContainer extends HTMLElement {
    constructor() {
       super();
@@ -30,10 +36,20 @@ class SlideContainer extends HTMLElement {
       this.jumpTo(0);
    }
 
+   /**
+    * Get the list of observed attributes
+    * @returns {string[]}
+    */
    static get observedAttributes() {
       return ['start-slide'];
    }
 
+   /**
+    * Called when the customizable html element attributes changed
+    * @param {string} attrName
+    * @param {string} oldVal
+    * @param {string} newVal
+    */
    async attributeChangedCallback(attrName, oldVal, newVal) {
       if (attrName === 'start-slide' && oldVal !== newVal) {
          {
@@ -58,26 +74,46 @@ class SlideContainer extends HTMLElement {
       // this.style.display = 'none';
    }
 
+   /**
+    * Current slide index
+    * @returns {number}
+    */
    get currentIndex() {
       return this._currentIndex;
    }
 
+   /**
+    * @returns {Slide}
+    */
    get currentSlide() {
       return this.slides ? this.slides[this._currentIndex] : null;
    }
 
+   /**
+    * @returns {number}
+    */
    get totalSlides() {
       return this.slides ? this.slides.length : 0;
    }
 
+   /**
+    * @returns {boolean}
+    */
    get hasPrevious() {
       return this._currentIndex > 0;
    }
 
+   /**
+    * @returns {boolean}
+    */
    get hasNext() {
       return this._currentIndex < this.totalSlides - 1;
    }
 
+   /**
+    * Main slide navigation and second step animation
+    * @param {number} slideIdx 
+    */
    jumpTo(slideIdx) {
       if (this._animator.transitioning) {
          return;
@@ -98,6 +134,9 @@ class SlideContainer extends HTMLElement {
       }
    }
 
+   /**
+    * Goes to next slide and applies first step slide animation
+    */
    next() {
       if (this.hasNext) {
          // this.jumpTo(this._currentIndex + 1);
@@ -107,6 +146,9 @@ class SlideContainer extends HTMLElement {
       }
    }
 
+   /**
+    * Move to previous slide, only if it exists
+    */
    previous() {
       if (this.hasPrevious) {
          this.jumpTo(this._currentIndex - 1);
@@ -114,5 +156,8 @@ class SlideContainer extends HTMLElement {
    }
 }
 
+/**
+ * Connect the SlideContainer class with html slide-container element
+ */
 export const registerDeck = () => customElements.define('slide-container', SlideContainer);
 // export const registerDeck = () => customElements.define('slide-container', slideContainer);

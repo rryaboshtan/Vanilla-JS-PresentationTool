@@ -107,6 +107,6 @@ class Controls extends HTMLElement {
 }
 
 /**
- * Connect the Controls class with html slide-container
+ * Connect the Controls class with html slide-controls element
  */
 export const registerControls = () => customElements.define('slide-controls', Controls);
