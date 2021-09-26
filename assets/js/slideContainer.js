@@ -7,7 +7,7 @@ import Animator from './animator.js';
  * @property {Animator} _animator Animation helper
  * @property {Router} _router Routing helper
  * @property {string} _route The url hash (see window.location.hash)
- * @property {CustomEvent} slidesChangedEvent 
+ * @property {CustomEvent} slidesChangedEvent
  */
 class SlideContainer extends HTMLElement {
    constructor() {
@@ -112,7 +112,7 @@ class SlideContainer extends HTMLElement {
 
    /**
     * Main slide navigation and second step animation
-    * @param {number} slideIdx 
+    * @param {number} slideIdx
     */
    jumpTo(slideIdx) {
       if (this._animator.transitioning) {
@@ -125,7 +125,7 @@ class SlideContainer extends HTMLElement {
          // this.deck.innerHTML = this.currentSlide.html;
          this.innerHTML = this.currentSlide.html;
          console.log('this.innerHtml = ', this.innerHTML);
-         this.router.setRoute(slideIdx + 1);
+         this.router.setUrlHash(slideIdx + 1);
          this.urlHash = this.router.getUrlHash();
          this.dispatchEvent(this.slidesChangedEvent);
 

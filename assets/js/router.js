@@ -38,19 +38,19 @@ class Router {
 
    /**
     * Set the url hash number
-    * @param {string} _urlHash 
+    * @param {string} _urlHash
     */
-   setRoute(_urlHash) {
+   setUrlHash(_urlHash) {
       window.location.hash = _urlHash;
       this._urlHash = _urlHash;
-    }
-    
+   }
+
    /**
     * @returns {string}
     */
-    getUrlHash() {
-        return window.location.hash.substr(1);
-    }
+   getUrlHash() {
+      return window.location.hash.substr(1);
+   }
 }
 
 export default Router;
