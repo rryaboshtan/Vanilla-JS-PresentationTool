@@ -38,7 +38,7 @@ export default class Slide {
       }
 
       const script = this._html.querySelector('script');
-      console.error('script = ', script.innerHTML);
+      // console.error('script = ', script.innerHTML);
       if (script) {
          this.dataBind(script);
       }
