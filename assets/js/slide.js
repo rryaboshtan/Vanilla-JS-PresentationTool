@@ -36,7 +36,32 @@ export default class Slide {
       } else {
          this._nextSlideName = null;
       }
+
+      const script = this._html.querySelector('script');
+      console.error('script = ', script.innerHTML);
+      if (script) {
+         this.dataBind(script);
+      }
    }
+
+   dataBind(script) {
+       const indexes = script.innerHTML.match(/\d+/g);
+       console.error('indexes = ', indexes);
+       let values = script.innerHTML.match(/'[a-zA-Z]+'/g);
+       console.error('values = ', values);
+       values = values.map((value) => value.slice(1, -1));
+       console.error('values = ', values);
+
+       const ul = this._html.querySelector('[repeat]');
+       ul.innerHTML = '';
+       console.error('ul = ', ul);
+
+       for (let i = 0; i < values.length; i++) {
+          ul.innerHTML += `<li>${indexes[i]} &mdash; ${values[i]} </li>`;
+       }
+       console.error('ul = ', ul);
+   }
+
    /**
     * The slide title
     * @returns {string} The slide title
