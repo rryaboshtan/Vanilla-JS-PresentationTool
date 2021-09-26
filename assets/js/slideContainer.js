@@ -15,14 +15,14 @@ class SlideContainer extends HTMLElement {
       this._currentIndex = 0;
       this._animator = new Animator();
       this.router = new Router();
-      this.urlHash = this.router.getRoute();
+      this.urlHash = this.router.getUrlHash();
       this.slidesChangedEvent = new CustomEvent('slideschanged', {
          bubbles: true,
          cancelable: false,
       });
       this.router.eventSource.addEventListener('routechanged', () => {
-         if (this.urlHash !== this.router.getRoute()) {
-            this.urlHash = this.router.getRoute();
+         if (this.urlHash !== this.router.getUrlHash()) {
+            this.urlHash = this.router.getUrlHash();
             if (this.urlHash) {
                const slide = parseInt(this.urlHash) - 1;
                this.jumpTo(slide);
@@ -56,7 +56,7 @@ class SlideContainer extends HTMLElement {
             console.log('newVal = ', newVal);
             this.slides = await loadSlides(newVal);
             console.log('this.slides = ', this.slides);
-            this.urlHash = this.router.getRoute();
+            this.urlHash = this.router.getUrlHash();
             console.log('this.urlHash = ', this.urlHash);
             let slide = 0;
             if (this.urlHash) {
@@ -126,7 +126,7 @@ class SlideContainer extends HTMLElement {
          this.innerHTML = this.currentSlide.html;
          console.log('this.innerHtml = ', this.innerHTML);
          this.router.setRoute(slideIdx + 1);
-         this.urlHash = this.router.getRoute();
+         this.urlHash = this.router.getUrlHash();
          this.dispatchEvent(this.slidesChangedEvent);
 
          console.log('this = ', this);

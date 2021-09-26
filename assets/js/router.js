@@ -9,8 +9,8 @@ export default class Router {
       this.route = null;
 
       window.addEventListener('popstate', () => {
-         if (this.getRoute() !== this.route) {
-            this.route = this.getRoute();
+         if (this.getUrlHash() !== this.route) {
+            this.route = this.getUrlHash();
             this.eventSource.dispatchEvent(this.routeChanged);
          }
       });
@@ -25,7 +25,7 @@ export default class Router {
       this.route = route;
     }
     
-    getRoute() {
+    getUrlHash() {
         return window.location.hash.substr(1);
     }
 }
