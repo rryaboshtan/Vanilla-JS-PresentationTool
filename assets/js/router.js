@@ -6,11 +6,11 @@ export default class Router {
          cancelable: false,
       });
 
-      this.route = null;
+      this._urlHash = null;
 
       window.addEventListener('popstate', () => {
-         if (this.getUrlHash() !== this.route) {
-            this.route = this.getUrlHash();
+         if (this.getUrlHash() !== this._urlHash) {
+            this._urlHash = this.getUrlHash();
             this.eventSource.dispatchEvent(this.routeChanged);
          }
       });
@@ -20,9 +20,9 @@ export default class Router {
       return this._eventSource;
    }
 
-   setRoute(route) {
-      window.location.hash = route;
-      this.route = route;
+   setRoute(_urlHash) {
+      window.location.hash = _urlHash;
+      this._urlHash = _urlHash;
     }
     
     getUrlHash() {
