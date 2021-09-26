@@ -4,6 +4,7 @@ async function loadSlide(slideName) {
    const response = await fetch(`./assets/slides/${slideName}.html`);
    const slide = await response.text();
    console.log('slide = ', slide);
+ 
    return new Slide(slide);
 }
 
@@ -12,7 +13,9 @@ export default async function loadSlides(start) {
    const slides = [];
    const cycle = {};
    while (next) {
+
       const nextSlide = await loadSlide(next);
+
       console.log('nextSlide =', nextSlide);
       console.log('next =', next);
       if (!cycle[next]) {

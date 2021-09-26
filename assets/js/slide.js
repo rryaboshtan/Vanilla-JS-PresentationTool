@@ -21,13 +21,13 @@ export default class Slide {
 
       console.log('this.title = ', this._title);
 
-      const nextSlides = this._html.querySelectorAll('.nextslide');
-      console.log('nextSlides.length = ', nextSlides.length);
-      console.log('this._html = ', this._html);
+      const nextSlide = this._html.querySelector('.nextslide');
+      // console.log('nextSlides.length = ', nextSlide.length);
+      // console.log('this._html = ', this._html);
 
-      if (nextSlides.length) {
+      if (nextSlide) {
          // nextSlides[0].style.visibility = 'hidden';
-         this._nextSlideName = nextSlides[0].innerText;
+         this._nextSlideName = nextSlide.innerText;
       } else {
          this._nextSlideName = null;
       }
