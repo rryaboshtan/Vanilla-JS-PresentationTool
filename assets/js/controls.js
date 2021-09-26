@@ -1,21 +1,35 @@
+
+
 /**
  * @typedef {object} ControlRefType
- * @property {HTMLButtonElement} first 
+ * @property {HTMLButtonElement} first
  * @property {HTMLButtonElement} prev
  * @property {HTMLButtonElement} next
  * @property {HTMLButtonElement} last
- * @class Controls dffffffffffffffffffffg
+ */
+
+/**
+ * Custom element that renders controls to navigate the slideContainer
  */
 class Controls extends HTMLElement {
+   /**
+    * Create a new instance of controls
+    */
    constructor() {
       super();
       /**
        * @property {ControlRefType}
        */
       this.controlRef = null;
+      /**
+       * @type {Navigator}
+       */
       this.slideContainer = null;
    }
 
+   /**
+    * Called when the element is inserted into the DOM. Used to fetch controls template and relation with the slideContainer
+    */
    async connectedCallback() {
       let template = null;
       try {
@@ -48,10 +62,19 @@ class Controls extends HTMLElement {
       this.refreshState();
    }
 
+   /**
+    * Get the list of attributes to watch
+    * @returns {string[]}
+    */
    static get observedAttributes() {
       return ['slide-container'];
    }
-
+   /**
+    *Called when the attribute is set
+    * @param {string} attrName
+    * @param {string} oldVal
+    * @param {string} newVal
+    */
    async attributeChangedCallback(attrName, oldVal, newVal) {
       if (attrName === 'slide-container' && oldVal !== newVal) {
          this.slideContainer = document.getElementById(newVal);
@@ -66,6 +89,9 @@ class Controls extends HTMLElement {
       }
    }
 
+   /**
+    * Enables/Disables control buttons and show the number of current slider
+    */
    refreshState() {
       if (!this.slideContainer) {
          throw new Error('Controls: slideContainer variable is not exist or equal to null');
@@ -80,4 +106,7 @@ class Controls extends HTMLElement {
    }
 }
 
+/**
+ * Connect the Controls class with html slide-container
+ */
 export const registerControls = () => customElements.define('slide-controls', Controls);
