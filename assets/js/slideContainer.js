@@ -15,16 +15,16 @@ class SlideContainer extends HTMLElement {
       this._currentIndex = 0;
       this._animator = new Animator();
       this.router = new Router();
-      this.route = this.router.getRoute();
+      this.urlHash = this.router.getRoute();
       this.slidesChangedEvent = new CustomEvent('slideschanged', {
          bubbles: true,
          cancelable: false,
       });
       this.router.eventSource.addEventListener('routechanged', () => {
-         if (this.route !== this.router.getRoute()) {
-            this.route = this.router.getRoute();
-            if (this.route) {
-               const slide = parseInt(this.route) - 1;
+         if (this.urlHash !== this.router.getRoute()) {
+            this.urlHash = this.router.getRoute();
+            if (this.urlHash) {
+               const slide = parseInt(this.urlHash) - 1;
                this.jumpTo(slide);
             }
          }
@@ -56,12 +56,12 @@ class SlideContainer extends HTMLElement {
             console.log('newVal = ', newVal);
             this.slides = await loadSlides(newVal);
             console.log('this.slides = ', this.slides);
-            this.route = this.router.getRoute();
-            console.log('this.route = ', this.route);
+            this.urlHash = this.router.getRoute();
+            console.log('this.urlHash = ', this.urlHash);
             let slide = 0;
-            if (this.route) {
+            if (this.urlHash) {
                console.log('sdfffffffffffffffffffffffffffff');
-               slide = parseInt(this.route) - 1;
+               slide = parseInt(this.urlHash) - 1;
             }
             console.log('Slide = ', slide);
             this.jumpTo(slide);
@@ -126,7 +126,7 @@ class SlideContainer extends HTMLElement {
          this.innerHTML = this.currentSlide.html;
          console.log('this.innerHtml = ', this.innerHTML);
          this.router.setRoute(slideIdx + 1);
-         this.route = this.router.getRoute();
+         this.urlHash = this.router.getRoute();
          this.dispatchEvent(this.slidesChangedEvent);
 
          console.log('this = ', this);
