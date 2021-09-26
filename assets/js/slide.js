@@ -44,6 +44,10 @@ export default class Slide {
       }
    }
 
+   /**
+    * Scans for data-binding and applies the bindings
+    * @param {HTMLElement} script 
+    */
    dataBind(script) {
        const indexes = script.innerHTML.match(/\d+/g);
        console.error('indexes = ', indexes);
