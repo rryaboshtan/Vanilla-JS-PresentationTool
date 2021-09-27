@@ -1,16 +1,28 @@
 @keyframes first-step {
-    from {margin-left: 0vw;}
-    to {margin-left: -100vw;}
+    from {
+        margin-left: 0vw;
+    }
+    to {
+        margin-left: -100vw;
+    }
 }
 
 @keyframes second-step {
-    from {margin-left: 100vw;}
-    to {margin-left: 0vw;}
+    from {
+        margin-left: 100vw;
+    }
+    to {
+        margin-left: 0vw;
+    }
 }
 
 @keyframes spin {
-    from {transform: rotate(0deg);}
-    to { transform: rotate(360deg);}
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .first-step-anim {
@@ -22,12 +34,12 @@
 .second-step-anim {
     animation-name: second-step;
     animation-timing-function: ease-out;
-    animation-duration: .3s;
+    animation-duration: 0.3s;
 }
 
 .anim-spin {
     animation-name: spin;
-    animation-timing-function: ease-in;
+    // animation-timing-function: ease-in;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }

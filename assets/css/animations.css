@@ -70,15 +70,13 @@
           animation-name: second-step;
   -webkit-animation-timing-function: ease-out;
           animation-timing-function: ease-out;
-  -webkit-animation-duration: .3s;
-          animation-duration: .3s;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
 }
 
 .anim-spin {
   -webkit-animation-name: spin;
           animation-name: spin;
-  -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
   -webkit-animation-duration: 2s;
           animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
