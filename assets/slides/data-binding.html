@@ -1,8 +1,21 @@
 <title>Data-binding example</title>
 <h1>Data binding example</h1>
-<ul repeat = "list">
+<pre>
+   for (let x = 1; x < 100; x+=1) {...}
+   var y = 1;
+   function process(inp) {
+      let y = inp * 2;
+      return y;
+   }
+</pre>
+<ul repeat="list">
    <li>1 - Value</li>
 </ul>
+
 <script>
-   const list = [{ idx: 0, value: 'one' }, { idx: 1, value: 'two' }, { idx: 2, value: 'three' }];
+   const list = [
+      { idx: 0, value: 'one' },
+      { idx: 1, value: 'two' },
+      { idx: 2, value: 'three' },
+   ];
 </script>
