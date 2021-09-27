@@ -19,6 +19,6 @@
     After that you must install http-server globally
      npm i -g http-server
 
-    Then type in the command line
+    Then type in the command line of the VSCode
      npx http-server
     and go to proposed link (it may be 127.0.0.1:8080 in the browser) 
