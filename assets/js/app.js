@@ -16,3 +16,14 @@ const app = async () => {
 };
 
 app();
+
+window.addEventListener('load', () => {
+   if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/pwa.js', {scope: '/'}).then(
+         () => {
+            console.info('Service worker registered');
+         },
+         (err) => console.error('Service worker ragistration failed', err)
+      );
+   }
+});
