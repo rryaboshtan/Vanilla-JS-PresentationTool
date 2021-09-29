@@ -63,7 +63,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-   // console.log('Fetch', event.request.url);
    const { request } = event;
 
    const url = new URL(request.url);
@@ -82,7 +81,7 @@ async function cacheFirst(request) {
 }
 
 async function networkFirst(request) {
-   const cache = await caches.open(dynamicCacheName);
+   const cache = await caches.open(CACHE_NAMES.assets);
    try {
       const responce = await fetch(request);
       await cache.put(request, responce.clone());
