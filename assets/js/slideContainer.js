@@ -127,7 +127,7 @@ class SlideContainer extends HTMLElement {
          // console.log('slideIdx = ', slideIdx);
          // this.deck.innerHTML = this.currentSlide.html;
          this.innerHTML = this.currentSlide.html;
-         console.log('this.innerHtml = ', this.innerHTML);
+         console.error('URL = ', window.location.href);
          this.router.setUrlHash(slideIdx + 1);
          this.urlHash = this.router.getUrlHash();
          this.dispatchEvent(this.slidesChangedEvent);

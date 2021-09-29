@@ -1,0 +1,37 @@
+{
+   "name": "Vanilla JS Presentation tool",
+   "short_name": "PresentationTool",
+   "theme_color": "#3a1a86",
+   "background_color": "#2f5b7e",
+   "display": "standalone",
+   "orientation": "portrait",
+   "scope": "/",
+   "start_url": ".",
+   "icons": [
+      {
+         "src": "/assets/appicons/favicon-196-196.png",
+         "sizes": "196x196",
+         "type": "image/png"
+      },
+      {
+         "src": "/assets/appicons/favicon-96-96.png",
+         "sizes": "96x96",
+         "type": "image/png"
+      },
+      {
+         "src": "/assets/appicons/favicon-32-32.png",
+         "sizes": "32x32",
+         "type": "image/png"
+      },
+      {
+         "src": "/assets/appicons/favicon-16-16.png",
+         "sizes": "16x16",
+         "type": "image/png"
+      },
+      {
+         "src": "/assets/appicons/favicon-128.png",
+         "sizes": "128x128",
+         "type": "image/png"
+      }
+   ]
+}
