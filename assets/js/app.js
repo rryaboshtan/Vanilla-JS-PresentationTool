@@ -20,8 +20,8 @@ app();
 window.addEventListener('load', () => {
    if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/pwa.js', {scope: '/'}).then(
-         () => {
-            console.info('Service worker registered');
+         (register) => {
+            console.error('Service worker registered: ', register);
          },
          (err) => console.error('Service worker ragistration failed', err)
       );

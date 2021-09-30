@@ -9,22 +9,22 @@
    "start_url": ".",
    "icons": [
       {
-         "src": "/assets/appicons/favicon-196-196.png",
+         "src": "/assets/appicons/favicon-196x196.png",
          "sizes": "196x196",
          "type": "image/png"
       },
       {
-         "src": "/assets/appicons/favicon-96-96.png",
+         "src": "/assets/appicons/favicon-96x96.png",
          "sizes": "96x96",
          "type": "image/png"
       },
       {
-         "src": "/assets/appicons/favicon-32-32.png",
+         "src": "/assets/appicons/favicon-32x32.png",
          "sizes": "32x32",
          "type": "image/png"
       },
       {
-         "src": "/assets/appicons/favicon-16-16.png",
+         "src": "/assets/appicons/favicon-16x16.png",
          "sizes": "16x16",
          "type": "image/png"
       },
