@@ -7,7 +7,27 @@ const BASE_CACHE_FILES = [
    'assets/css/animations.css',
    'manifest.json',
    'assets/img/logo.png',
+   'assets/img/devnexus.png',
+   'assets/img/MyPhoto.jpg',
+   'assets/img/vanillin.png',
    'assets/js/app.js',
+   'assets/js/animator.js',
+   'assets/js/controls.js',
+   'assets/js/dataBinding.js',
+   'assets/js/jsonLoader.js',
+   'assets/js/router.js',
+   'assets/js/slide.js',
+   'assets/js/slideContainer.js',
+   'assets/js/slideLoader.js',
+   'assets/slides/001-title.html',
+   'assets/slides/002-stuff.html',
+   'assets/slides/003-morestuff.html',
+   'assets/slides/data-binding.html',
+   // 'assets/appicons/favicon-16x16.png',
+   // 'assets/appicons/favicon-32x32.png',
+   // 'assets/appicons/favicon-96x96.png',
+   // 'assets/appicons/favicon-196x196.png',
+   // 'assets/appicons/favicon-128.png',
 ];
 
 const OFFLINE_CACHE_FILE = '/pwa/offline.html';
@@ -117,6 +137,7 @@ self.addEventListener('fetch', (event) => {
 async function cacheFirst(request) {
    const cached = await caches.match(request);
    return cached ?? (await fetch(request));
+   // return cached ?? (await fetch(request)) ?? caches.match(OFFLINE_CACHE_FILE);
 }
 
 async function networkFirst(request) {
