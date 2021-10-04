@@ -14,7 +14,7 @@
 
  ## Getting started
     You must clone the repo:
-     https://github.com/rryaboshtan/PresentationTool.git
+     git clone https://github.com/rryaboshtan/PresentationTool.git
 
     After that you must install http-server globally
      npm i -g http-server
