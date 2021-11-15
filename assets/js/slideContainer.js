@@ -51,17 +51,12 @@ class SlideContainer extends HTMLElement {
    async attributeChangedCallback(attrName, oldVal, newVal) {
       if (attrName === 'start-slide' && oldVal !== newVal) {
          {
-            console.log('newVal = ', newVal);
             this.slides = await loadSlides(newVal);
-            console.log('this.slides = ', this.slides);
             this.urlHash = this.router.getUrlHash();
-            console.log('this.urlHash = ', this.urlHash);
             let slide = 0;
             if (this.urlHash) {
-               console.log('sdfffffffffffffffffffffffffffff');
                slide = parseInt(this.urlHash) - 1;
             }
-            console.log('Slide = ', slide);
             this.jumpTo(slide);
          }
       }
@@ -117,12 +112,10 @@ class SlideContainer extends HTMLElement {
       if (slideIdx >= 0 && slideIdx < this.totalSlides) {
          this._currentIndex = slideIdx;
          this.innerHTML = this.currentSlide.html;
-         console.error('URL = ', window.location.href);
          this.router.setUrlHash(slideIdx + 1);
          this.urlHash = this.router.getUrlHash();
          this.dispatchEvent(this.slidesChangedEvent);
 
-         console.log('this = ', this);
          this._animator.stepByStepAnimation(this.querySelector('div'), this._animator.secondStepAnim);
       }
    }

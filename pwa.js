@@ -31,10 +31,10 @@ class Pwa {
       this.NOT_FOUND_CACHE_FILE = '/pwa/404.html';
 
       this.CACHE_NAMES = {
-         assets: 'assets-v' + CACHE_VERSION,
-         content: 'content-v' + CACHE_VERSION,
-         offline: 'offline-v' + CACHE_VERSION,
-         notFound: '404-v' + CACHE_VERSION,
+         assets: 'assets-v' + this.CACHE_VERSION,
+         content: 'content-v' + this.CACHE_VERSION,
+         offline: 'offline-v' + this.CACHE_VERSION,
+         notFound: '404-v' + this.CACHE_VERSION,
       };
 
       this.TTL = 3600;
@@ -42,9 +42,9 @@ class Pwa {
 
    async installServiceWorker() {
       try {
-         const cache = await caches.open(CACHE_NAMES.assets);
+         const cache = await caches.open(this.CACHE_NAMES.assets);
 
-         await cache.addAll(BASE_CACHE_FILES);
+         await cache.addAll(this.BASE_CACHE_FILES);
       } catch (err) {
          return new Promise((resolve, reject) => {
             reject(err);
@@ -56,11 +56,10 @@ class Pwa {
          const cachNames = await caches.keys();
          await Promise.all(cachNames.map(name => caches.delete(name)));
 
-         const cache = await caches.open(CACHE_NAMES.assets);
-         await cache.addAll(BASE_CACHE_FILES);
-         console.error('BASE CACH FILES ', BASE_CACHE_FILES);
+         const cache = await caches.open(this.CACHE_NAMES.assets);
+         await cache.addAll(this.BASE_CACHE_FILES);
 
-         event.skipWaiting();
+         // event.skipWaiting();
       });
 
       this.scope.addEventListener('activate', async event => {
@@ -73,9 +72,9 @@ class Pwa {
          const url = new URL(request.url);
 
          if (url.origin === location.origin) {
-            event.respondWith(cacheFirst(request));
+            event.respondWith(this.cacheFirst(request));
          } else {
-            event.respondWith(networkFirst(request));
+            event.respondWith(this.networkFirst(request));
          }
       });
    }
@@ -86,14 +85,17 @@ class Pwa {
    }
 
    async networkFirst(request) {
-      const cache = await caches.open(CACHE_NAMES.assets);
+      const cache = await caches.open(this.CACHE_NAMES.assets);
       try {
          const responce = await fetch(request);
          await cache.put(request, responce.clone());
          return responce;
       } catch (e) {
          const cached = await cache.match(request);
-         return cached ?? (await caches.match(OFFLINE_CACHE_FILE));
+         return cached ?? (await caches.match(this.OFFLINE_CACHE_FILE));
       }
    }
 }
+
+const pwa = new Pwa(self);
+pwa.register();

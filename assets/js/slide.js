@@ -27,8 +27,6 @@ export default class Slide {
          this._title = this._title[0].innerText;
       }
 
-      console.log('this.title = ', this._title);
-
       const nextSlide = this._html.querySelector('.nextslide');
 
       if (nextSlide) {

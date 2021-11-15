@@ -38,13 +38,10 @@ class Controls extends HTMLElement {
          throw new Error('Controls: fetching /assets/templates/controls.html are impossible');
       }
 
-      console.log('Template = ', template);
       this.innerHTML = '';
       const host = document.createElement('div');
       host.innerHTML = template;
-      console.log('host.innerHTML = ', host.innerHTML);
       this.appendChild(host);
-      console.log('this = ', this);
       this.controlRef = {
          first: document.getElementById('ctrlFirst'),
          prev: document.getElementById('ctrlPrevious'),
@@ -52,8 +49,6 @@ class Controls extends HTMLElement {
          last: document.getElementById('ctrlLast'),
          pos: document.getElementById('position'),
       };
-      console.log("document.getElementById('ctrlFirst') = ", document.getElementById('ctrlFirst'));
-      console.log('this.controlRef.first = ', this.controlRef.first);
       this.controlRef.first.addEventListener('click', () => this.slideContainer.jumpTo(0));
       this.controlRef.prev.addEventListener('click', () => this.slideContainer.previous());
       this.controlRef.next.addEventListener('click', () => this.slideContainer.next());
