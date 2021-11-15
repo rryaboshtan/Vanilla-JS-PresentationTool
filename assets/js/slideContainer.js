@@ -30,9 +30,6 @@ class SlideContainer extends HTMLElement {
             }
          }
       });
-      // this.router.eventSource.addEventListener('click', () => console.log('OnClick'));
-
-      // console.error('OnRouteChanged =', this.router.eventSource);
 
       this.jumpTo(0);
    }
@@ -69,11 +66,7 @@ class SlideContainer extends HTMLElement {
          }
       }
    }
-   connectedCallback() {
-      // this.style.color = 'red';
-      // this.style.border = '1px solid red';
-      // this.style.display = 'none';
-   }
+   connectedCallback() {}
 
    /**
     * Current slide index
@@ -122,10 +115,7 @@ class SlideContainer extends HTMLElement {
          return;
       }
       if (slideIdx >= 0 && slideIdx < this.totalSlides) {
-         // console.log('|||||||||||||||||||||');
          this._currentIndex = slideIdx;
-         // console.log('slideIdx = ', slideIdx);
-         // this.deck.innerHTML = this.currentSlide.html;
          this.innerHTML = this.currentSlide.html;
          console.error('URL = ', window.location.href);
          this.router.setUrlHash(slideIdx + 1);
@@ -142,7 +132,6 @@ class SlideContainer extends HTMLElement {
     */
    next() {
       if (this.hasNext) {
-         // this.jumpTo(this._currentIndex + 1);
          this._animator.stepByStepAnimation(this.querySelector('div'), this._animator.firstStepAnim, () =>
             this.jumpTo(this._currentIndex + 1)
          );
@@ -163,4 +152,3 @@ class SlideContainer extends HTMLElement {
  * Connect the SlideContainer class with html slide-container element
  */
 export const registerDeck = () => customElements.define('slide-container', SlideContainer);
-// export const registerDeck = () => customElements.define('slide-container', slideContainer);

@@ -54,18 +54,5 @@ class Animator {
       htmlElem.classList.add(stepAnimClass);
    }
 }
-//    secondStepAnim(htmlElem) {
-//       this._transitioning = true;
-
-//       const animationEnd = () => {
-//          htmlElem.removeEventListener('animationend', animationEnd);
-//          htmlElem.classList.remove(this._firstStepAnim);
-//          this._transitioning = false;
-//          callback();
-//       };
-
-//       htmlElem.addEventListener('animationend', animationEnd, false);
-//       htmlElem.classList.add(this._firstStepAnim);
-//    }
 
 export default Animator;

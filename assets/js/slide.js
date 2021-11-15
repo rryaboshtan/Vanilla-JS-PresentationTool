@@ -30,18 +30,14 @@ export default class Slide {
       console.log('this.title = ', this._title);
 
       const nextSlide = this._html.querySelector('.nextslide');
-      // console.log('nextSlides.length = ', nextSlide.length);
-      // console.log('this._html = ', this._html);
 
       if (nextSlide) {
-         // nextSlides[0].style.visibility = 'hidden';
          this._nextSlideName = nextSlide.innerText;
       } else {
          this._nextSlideName = null;
       }
 
       const script = this._html.querySelector('script');
-      // console.error('script = ', script.innerHTML);
       if (script) {
          const ul = this._html.querySelector('[repeat]');
          this._dataBinding.bind(script, ul);
@@ -69,9 +65,6 @@ export default class Slide {
    get html() {
       return this._html.innerHTML;
    }
-   // get html() {
-   //    return '<div>' + this._html.innerHTML + '</div>';
-   // }
 
    /**
     * @returns {string} The name of the next slide (filename without the .html extension)

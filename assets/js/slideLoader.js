@@ -31,7 +31,6 @@ export default async function loadSlides(start) {
       if (!cycle[next]) {
          const nextSlide = await loadSlide(next);
          slides.push(nextSlide);
-         // cycle[nextSlide.title] = nextSlide;
          next = nextSlide.nextSlideName;
          console.log('nextSlideName = ', next);
       } else {

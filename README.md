@@ -3,6 +3,7 @@
     - OOP
     - JS Custom elements
     - JSDoc
+    - PWA
 
 ### Screenshots
 ![](screenshots/screenshot1.png)

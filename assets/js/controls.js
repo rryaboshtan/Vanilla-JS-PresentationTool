@@ -1,5 +1,3 @@
-
-
 /**
  * @typedef {object} ControlRefType
  * @property {HTMLButtonElement} first
